@@ -2,21 +2,25 @@ import { ref, readonly, onMounted } from 'vue'
 
 export type ThemeMode = 'light' | 'dark' | 'auto'
 
+// Create a singleton theme state
+let themeState: {
+  theme: any,
+  isDark: any,
+  setTheme: (newTheme: ThemeMode) => void,
+  toggleTheme: () => void
+} | null = null
+
 export const useTheme = () => {
+  // Return existing state if already created
+  if (themeState) {
+    return themeState
+  }
+
   const theme = ref<ThemeMode>('auto')
   const isDark = ref(false)
 
   // Check if we're in a client-side environment
   const isClient = process.client
-
-  // Initialize theme from localStorage or default to 'auto'
-  const initializeTheme = () => {
-    if (!isClient) return
-
-    const savedTheme = localStorage.getItem('theme') as ThemeMode || 'auto'
-    theme.value = savedTheme
-    applyTheme()
-  }
 
   // Apply theme based on current mode
   const applyTheme = () => {
@@ -37,6 +41,15 @@ export const useTheme = () => {
     } else {
       root.classList.remove('dark')
     }
+  }
+
+  // Initialize theme from localStorage or default to 'auto'
+  const initializeTheme = () => {
+    if (!isClient) return
+
+    const savedTheme = (localStorage.getItem('theme') as ThemeMode) || 'auto'
+    theme.value = savedTheme
+    applyTheme()
   }
 
   // Set theme and persist to localStorage
@@ -79,10 +92,13 @@ export const useTheme = () => {
     setupSystemThemeListener()
   })
 
-  return {
+  // Create the state object
+  themeState = {
     theme: readonly(theme),
     isDark: readonly(isDark),
     setTheme,
     toggleTheme
   }
+
+  return themeState
 }

@@ -17,11 +17,11 @@
             <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Contact</a>
             <div class="ml-4 pl-4 border-l border-gray-300 dark:border-gray-600">
               <button 
-                @click="toggleDarkMode" 
-                class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
-                title="Toggle theme"
+                @click="toggleThemeMode" 
+                class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all duration-300 min-w-[120px] text-sm font-medium"
+                :title="`Current: ${getThemeDisplay()}`"
               >
-                🌙
+                {{ getThemeDisplay() }}
               </button>
             </div>
           </div>
@@ -353,28 +353,81 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 
-// Simple theme management without composable for now
+// Theme state
+const theme = ref('auto') // 'light' | 'dark' | 'auto'
 const isDark = ref(false)
 
-// Simple toggle function for testing
-const toggleDarkMode = () => {
-  isDark.value = !isDark.value
-  if (process.client) {
-    document.documentElement.classList.toggle('dark', isDark.value)
-    localStorage.setItem('theme', isDark.value ? 'dark' : 'light')
+// Apply theme based on current mode
+const applyTheme = () => {
+  if (!process.client) return
+
+  const root = document.documentElement
+  
+  if (theme.value === 'auto') {
+    // Use system preference
+    isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+  } else {
+    isDark.value = theme.value === 'dark'
   }
+
+  // Apply dark class to document
+  if (isDark.value) {
+    root.classList.add('dark')
+  } else {
+    root.classList.remove('dark')
+  }
+}
+
+// Set theme and persist to localStorage
+const setTheme = (newTheme) => {
+  theme.value = newTheme
+  
+  if (process.client) {
+    localStorage.setItem('theme', newTheme)
+    applyTheme()
+  }
+}
+
+// Enhanced toggle function that cycles through all modes
+const toggleThemeMode = () => {
+  const currentTheme = theme.value
+  const nextTheme = currentTheme === 'light' ? 'dark' : currentTheme === 'dark' ? 'auto' : 'light'
+  setTheme(nextTheme)
+}
+
+// Get current theme display
+const getThemeDisplay = () => {
+  if (theme.value === 'auto') {
+    return isDark.value ? '🌙 Auto (Dark)' : '☀️ Auto (Light)'
+  }
+  return theme.value === 'dark' ? '🌙 Dark' : '☀️ Light'
 }
 
 // Initialize theme on mount
 onMounted(() => {
   if (process.client) {
-    const savedTheme = localStorage.getItem('theme')
-    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    // Get saved theme or default to auto
+    const savedTheme = localStorage.getItem('theme') || 'auto'
+    theme.value = savedTheme
+    applyTheme()
+
+    // Listen for system theme changes when in auto mode
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     
-    isDark.value = savedTheme ? savedTheme === 'dark' : systemDark
-    document.documentElement.classList.toggle('dark', isDark.value)
+    const handleChange = () => {
+      if (theme.value === 'auto') {
+        applyTheme()
+      }
+    }
+
+    mediaQuery.addEventListener('change', handleChange)
     
     console.log('Portfolio loaded successfully!')
+    console.log('Theme system initialized:', { 
+      theme: theme.value, 
+      isDark: isDark.value,
+      systemDark: mediaQuery.matches
+    })
   }
 })
 
