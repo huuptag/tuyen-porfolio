@@ -183,76 +183,7 @@
     </section>
     
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-white">
-      <div class="container mx-auto px-6">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Featured Projects</h2>
-          <div class="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
-          <p class="text-lg text-gray-600 mt-6 max-w-2xl mx-auto">
-            A showcase of my latest work combining creativity with technical excellence
-          </p>
-        </div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          <!-- Project 1 -->
-          <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group">
-            <div class="relative overflow-hidden aspect-video bg-gradient-to-br from-blue-200 to-purple-300 flex items-center justify-center">
-              <div class="text-6xl">🎲</div>
-              <div class="absolute inset-0 bg-gradient-to-br from-blue-600/90 to-purple-600/90 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                <div class="text-white font-semibold">3D Animation</div>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">3D Interactive Portfolio</h3>
-              <p class="text-gray-600 text-sm mb-4">A stunning 3D portfolio website built with Three.js and Vue.js, featuring immersive animations.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-md">Vue.js</span>
-                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-md">Three.js</span>
-                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-md">WebGL</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Project 2 -->
-          <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group">
-            <div class="relative overflow-hidden aspect-video bg-gradient-to-br from-green-200 to-blue-300 flex items-center justify-center">
-              <div class="text-6xl">🛒</div>
-              <div class="absolute inset-0 bg-gradient-to-br from-green-600/90 to-blue-600/90 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                <div class="text-white font-semibold">Web Development</div>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">E-commerce Platform</h3>
-              <p class="text-gray-600 text-sm mb-4">Modern e-commerce solution with advanced filtering and seamless checkout experience.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-md">Nuxt.js</span>
-                <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-md">TypeScript</span>
-                <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-md">Stripe</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Project 3 -->
-          <div class="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 group">
-            <div class="relative overflow-hidden aspect-video bg-gradient-to-br from-purple-200 to-pink-300 flex items-center justify-center">
-              <div class="text-6xl">📊</div>
-              <div class="absolute inset-0 bg-gradient-to-br from-purple-600/90 to-pink-600/90 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                <div class="text-white font-semibold">UI/UX Design</div>
-              </div>
-            </div>
-            <div class="p-6">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">Analytics Dashboard</h3>
-              <p class="text-gray-600 text-sm mb-4">Beautiful analytics dashboard with motion graphics and intuitive data visualization.</p>
-              <div class="flex flex-wrap gap-2">
-                <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-md">React</span>
-                <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-md">D3.js</span>
-                <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-md">Framer</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ProjectsSection />
     
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
@@ -343,6 +274,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import ProjectsSection from '../components/ProjectsSection.vue'
 
 // Meta tags and SEO
 useHead({
