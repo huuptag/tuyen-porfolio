@@ -161,7 +161,7 @@ const projects = ref([
     views: '1.2k',
     stars: '45',
     icon: '🎲',
-    github: '#',
+    github: 'https://github.com/huuptag/3d-portfolio',
     live: '#'
   },
   {
@@ -174,7 +174,7 @@ const projects = ref([
     views: '2.1k',
     stars: '67',
     icon: '🛒',
-    github: '#',
+    github: 'https://github.com/huuptag/ecommerce-platform',
     live: '#'
   },
   {
@@ -187,7 +187,7 @@ const projects = ref([
     views: '856',
     stars: '32',
     icon: '📊',
-    github: '#',
+    github: 'https://github.com/huuptag/analytics-dashboard',
     live: '#'
   },
   {
@@ -200,7 +200,7 @@ const projects = ref([
     views: '1.8k',
     stars: '89',
     icon: '🎨',
-    github: '#',
+    github: 'https://github.com/huuptag/3d-product-viewer',
     live: '#'
   },
   {
@@ -213,7 +213,7 @@ const projects = ref([
     views: '1.4k',
     stars: '56',
     icon: '✅',
-    github: '#',
+    github: 'https://github.com/huuptag/task-manager',
     live: '#'
   },
   {
@@ -226,7 +226,85 @@ const projects = ref([
     views: '934',
     stars: '41',
     icon: '💪',
-    github: '#',
+    github: 'https://github.com/huuptag/fitness-tracker',
+    live: '#'
+  },
+  {
+    id: 7,
+    title: 'Weather Visualization Tool',
+    description: 'Interactive weather application with 3D globe visualization, real-time data updates, and detailed climate analytics.',
+    category: 'Web Development',
+    technologies: ['Vue.js', 'Three.js', 'OpenWeather API', 'D3.js'],
+    year: '2024',
+    views: '1.1k',
+    stars: '73',
+    icon: '🌍',
+    github: 'https://github.com/huuptag/weather-3d',
+    live: '#'
+  },
+  {
+    id: 8,
+    title: 'AI Chat Interface',
+    description: 'Modern chat interface with AI integration, real-time messaging, and advanced natural language processing capabilities.',
+    category: 'Web Development',
+    technologies: ['Next.js', 'TypeScript', 'OpenAI API', 'Socket.io'],
+    year: '2024',
+    views: '2.3k',
+    stars: '102',
+    icon: '🤖',
+    github: 'https://github.com/huuptag/ai-chat-app',
+    live: '#'
+  },
+  {
+    id: 9,
+    title: 'Portfolio Template Engine',
+    description: 'Customizable portfolio template generator with drag-and-drop functionality, multiple themes, and responsive design.',
+    category: 'Web Development',
+    technologies: ['Vue.js', 'Nuxt.js', 'Tailwind CSS', 'Firebase'],
+    year: '2024',
+    views: '987',
+    stars: '64',
+    icon: '🎯',
+    github: 'https://github.com/huuptag/portfolio-generator',
+    live: '#'
+  },
+  {
+    id: 10,
+    title: 'VR Experience Gallery',
+    description: 'Virtual reality gallery showcasing 3D artworks with immersive navigation and cross-platform VR headset support.',
+    category: '3D Animation',
+    technologies: ['A-Frame', 'Three.js', 'WebXR', 'Blender'],
+    year: '2023',
+    views: '1.5k',
+    stars: '78',
+    icon: '🥽',
+    github: 'https://github.com/huuptag/vr-gallery',
+    live: '#'
+  },
+  {
+    id: 11,
+    title: 'Code Snippet Manager',
+    description: 'Developer tool for organizing and sharing code snippets with syntax highlighting, tagging system, and team collaboration.',
+    category: 'Web Development',
+    technologies: ['React', 'TypeScript', 'Monaco Editor', 'PostgreSQL'],
+    year: '2023',
+    views: '756',
+    stars: '29',
+    icon: '💻',
+    github: 'https://github.com/huuptag/snippet-manager',
+    live: '#'
+  },
+  {
+    id: 12,
+    title: 'Music Player Interface',
+    description: 'Elegant music streaming interface with playlist management, audio visualization, and social listening features.',
+    category: 'UI/UX Design',
+    technologies: ['React', 'Web Audio API', 'GSAP', 'Styled Components'],
+    year: '2024',
+    views: '1.3k',
+    stars: '95',
+    icon: '🎵',
+    github: 'https://github.com/huuptag/music-player-ui',
     live: '#'
   }
 ])
