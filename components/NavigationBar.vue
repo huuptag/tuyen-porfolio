@@ -20,22 +20,28 @@
 
         <!-- Desktop Navigation -->
         <div class="hidden md:block">
-          <div class="ml-10 flex items-baseline space-x-8">
-            <NuxtLink
-              v-for="item in navItems"
-              :key="item.name"
-              :to="item.href"
-              class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors duration-300 relative group"
-              @click="scrollToSection(item.href.slice(1))"
-            >
-              {{ item.name }}
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-            </NuxtLink>
+          <div class="ml-10 flex items-center space-x-8">
+            <div class="flex items-baseline space-x-6">
+              <NuxtLink
+                v-for="item in navItems"
+                :key="item.name"
+                :to="item.href"
+                class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 text-sm font-medium transition-colors duration-300 relative group"
+                @click="scrollToSection(item.href.slice(1))"
+              >
+                {{ item.name }}
+                <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+              </NuxtLink>
+            </div>
+            <div class="ml-4 pl-4 border-l border-gray-300 dark:border-gray-600">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
 
-        <!-- Mobile menu button -->
-        <div class="md:hidden">
+        <!-- Mobile menu button and theme toggle -->
+        <div class="md:hidden flex items-center space-x-2">
+          <ThemeToggle />
           <button
             @click="isMenuOpen = !isMenuOpen"
             type="button"
